@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors')
 require('dotenv').config();
 require('./db/conn')
+const {listFeatured} = require("./controllers/product")
 
 const authRoutes = require('./routes/auth')
 const userRoutes = require('./routes/user')
@@ -17,9 +18,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 7000;
 
 //routes
+app.get("/",(req,res)=>{res.send("market")})
+app.get("/api",listFeatured)
 app.use("/api",authRoutes);
 app.use("/api",userRoutes);
 app.use('/api',categoryRoutes);
