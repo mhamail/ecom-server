@@ -22,7 +22,7 @@ const port = process.env.PORT || 7000;
 
 //routes
 app.get("/",(req,res)=>{res.send("market")})
-app.get("/api",listFeatured)
+// app.get("/api",listFeatured) //test bases
 app.use("/api",authRoutes);
 app.use("/api",userRoutes);
 app.use('/api',categoryRoutes);
